@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  color: green;
+}
+
+h1 {
+  color: blue;
+  font-weight: bold;
+  background-color: red;
+  text-align: center;
+}
+
+a {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: red;
+}
+
+a:hover {
+  text-decoration: none;
+  background: orange;
+}
