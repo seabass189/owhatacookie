@@ -1,11 +1,55 @@
 body {
   margin: 0;
   color: green;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 h1 {
-  color: #FFF;
+  color: blue;
   font-weight: bold;
   background-color: red;
   text-align: center;
 }
+
+a {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: red;
+}
+
+a:hover {
+  text-decoration: none;
+  background: orange;
+}
+
+nav {
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+  background: orange;
+  padding: 40px;
+}
+
+.logo-img {
+  width: 200px;
+}
+
+.logo-span {
+  font-weight: bold;
+  text-shadow: 2px 2px 5px gray;
+  color: #CC0000;
+}
+
+.logo-span-large {
+  font-size: 30px;
+}
+
+.logo-span-small {
+  font-size: 25px;
+}
+
+/* .nav-right {
+  float: right;
+} */

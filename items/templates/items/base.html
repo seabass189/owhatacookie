@@ -10,33 +10,38 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <!-- Style: Fonts from Google -->
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Luckiest+Guy&family=Playball&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap" rel="stylesheet">
 
   <!-- static CSS files -->
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
   {% block css %}
   {% endblock %}
-</head>
-<body>
-  <div class="base-box d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal"><a id="home-btn" href="{% url 'home' %}">Test!</a></h5>
-  </div>
-  {% block content %}
-  {% endblock %}
-
-  <!-- <script type="text/javascript"> -->
 
   <!-- </script> -->
-  {% block extra_scripts %}
-  {% endblock extra_scripts %}
+  {% block scripts %}
+  {% endblock scripts %}
+</head>
+<body>
+  <div class="logo-border">
+    <div class="logo">
+      <img class="logo-img" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="The logo of O'Whata Cookie"><br>
+      <p>
+        <span class="logo-span logo-span-large">Cookies, Cakes</span><br>
+        <span class="logo-span logo-span-small">and much more made with Love</span>
+      </p>
+    </div>
+  </div>
+  <nav>
+    <a href="{% url 'home' %}" class="btn nav-btn">Home</a>
+    <!-- <div class="nav-right"> -->
+    <a href="{% url 'items_list' %}" class="btn nav-btn">Order</a>
+    <a href="#" class="btn nav-btn">About Us</a>
+    <a href="#" class="btn nav-btn">Contact</a>
+    <!-- </div> -->
+  </nav>
+
+  {% block content %}
+  {% endblock %}
 
 </body>
 </html>

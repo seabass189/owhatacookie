@@ -1,0 +1,45 @@
+{% extends 'items/base.html' %}
+{% load static %}
+{% load index %}
+
+{% block css %}
+<link href="{% static 'css/items_list.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/items_list.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container items-view">
+  {% for i in i_amt %}
+  <h3>{{ category_names|index:i }}</h3>
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        {% for item in category_items|index:i %}
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="{{ item.image.url }}" height="300"></img>
+            <div class="card-body">
+              <p class="card-text"><b>{{ item.name }}</b> - ${{ item.price }}</p>
+              <button class="show" id="btn{{ item.id }}" onclick="clickAddToCart('{{ item.id }}')">Add to Cart</button>
+              <form class="" action="" method="post">
+                {% csrf_token %}
+                <div class="quantity-line">
+                  <div><button class="hide" id="btn-confirm{{ item.id }}" onclick="confirm('{{ item.id }}')">Confirm Amount</button></div>
+                  <div><input class="hide" type="number" id="quantity{{ item.id }}" name="quantity{{ item.id }}" value="1" min="1" max="20"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
