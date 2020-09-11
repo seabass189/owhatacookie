@@ -17,23 +17,15 @@
   {% block css %}
   {% endblock %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
-
-  <!-- <script>
-  $(document).ready(function(){
-    $("#secret-button").click(function(){
-      $('#secret-text').fadeIn("slow");
-    });
-  });
-</script> -->
 
 </head>
 <body>
-  <h1 id="secret-text">SECRET MESSAGE</h1>
   <div class="logo-border">
     <div class="logo">
       <img class="logo-img" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="The logo of O'Whata Cookie"><br>
-      <p>
+      <p class="title-span" id="title-span">
         <span class="logo-span logo-span-large">Cookies, Cakes</span><br>
         <span class="logo-span logo-span-small">and much more made with Love</span>
       </p>

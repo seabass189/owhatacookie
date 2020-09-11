@@ -1,14 +1,10 @@
-// let btn = document.querySelector('#home-btn')
-//
-// btn.addEventListener('click', function() {
-//   alert('ow!! that smarts!')
-// })
-//
-// let secretBtn = document.querySelector('#secret-btn')
-
-
-$(document).ready(function(){
-  $("#secret-button").click(function(){
-    $('#secret-text').fadeIn("slow");
-  });
+// this will literally just run once, and then it will leave a cookie and never run again
+$(document).ready(function () {
+  if(Cookies.get("scriptExecuted")!="yes") {
+    $('#title-span').hide()
+    $('#title-span').fadeIn(3000);
+    //Scroll div you the bottom onpage load
+    // $("#divTest").scrollTop($("#divTest")[0].scrollHeight);
+    Cookies.set("scriptExecuted", "yes");
+  }
 });
