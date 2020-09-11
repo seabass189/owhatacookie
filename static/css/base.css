@@ -29,11 +29,18 @@ nav {
 .logo {
   text-align: center;
   background: orange;
-  padding: 40px;
+  padding: 15px;
+  border-top: white 4px solid;
+  border-bottom: white 4px solid;
+}
+
+.logo-border {
+  border-top: #CC0000 4px solid;
+  border-bottom: #CC0000 4px solid;
 }
 
 .logo-img {
-  width: 200px;
+  width: 100px;
 }
 
 .logo-span {
@@ -50,6 +57,12 @@ nav {
   font-size: 25px;
 }
 
-/* .nav-right {
-  float: right;
-} */
+.nav-btn {
+  font-size: 20px;
+  border-radius: 0;
+}
+
+.nav-btn:hover, .nav-btn:focus {
+  background: #CC0000;
+  color: white;
+}

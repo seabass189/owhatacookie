@@ -1,0 +1,11 @@
+body {
+  background: green;
+}
+
+.hide {
+  display: none;
+}
+
+.card-img-top {
+  object-fit: cover;
+}

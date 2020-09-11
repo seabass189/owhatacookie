@@ -1,3 +1,7 @@
+body {
+  background: green;
+}
+
 .hide {
   display: none;
 }
