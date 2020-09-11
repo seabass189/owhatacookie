@@ -16,13 +16,20 @@
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
   {% block css %}
   {% endblock %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
 
-  <!-- </script> -->
-  {% block scripts %}
-  {% endblock scripts %}
+  <!-- <script>
+  $(document).ready(function(){
+    $("#secret-button").click(function(){
+      $('#secret-text').fadeIn("slow");
+    });
+  });
+</script> -->
+
 </head>
 <body>
-  {% load static %}
+  <h1 id="secret-text">SECRET MESSAGE</h1>
   <div class="logo-border">
     <div class="logo">
       <img class="logo-img" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="The logo of O'Whata Cookie"><br>
@@ -33,16 +40,23 @@
     </div>
   </div>
   <nav>
-    <a href="{% url 'home' %}" class="btn nav-btn">Home</a>
+    <a href="{% url 'home' %}" class="btn nav-btn" id="home-btn">Home</a>
     <!-- <div class="nav-right"> -->
     <a href="{% url 'items_list' %}" class="btn nav-btn">Order</a>
     <a href="#" class="btn nav-btn">About Us</a>
     <a href="#" class="btn nav-btn">Contact</a>
+    <button id="secret-button" type="button" name="button">Secret</button>
     <!-- </div> -->
   </nav>
 
   {% block content %}
   {% endblock %}
+
+  <!-- </script> -->
+  <!-- <script type="text/javascript" src="{% static 'js/base.js' %}"></script> -->
+
+  {% block scripts %}
+  {% endblock scripts %}
 
 </body>
 </html>
