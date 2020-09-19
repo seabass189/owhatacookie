@@ -16,9 +16,10 @@
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
   {% block css %}
   {% endblock %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/base.js' %}"></script> -->
 
 </head>
 <body>
@@ -31,21 +32,31 @@
       </p>
     </div>
   </div>
-  <nav>
-    <a href="{% url 'home' %}" class="btn nav-btn" id="home-btn">Home</a>
-    <!-- <div class="nav-right"> -->
-    <a href="{% url 'items_list' %}" class="btn nav-btn">Order</a>
-    <a href="#" class="btn nav-btn">About Us</a>
-    <a href="#" class="btn nav-btn">Contact</a>
-    <button id="secret-button" type="button" name="button">Secret</button>
-    <!-- </div> -->
-  </nav>
+  <div class="nav-border">
+    <nav>
+      <a href="{% url 'home' %}" class="btn nav-btn" id="home-btn">Home</a>
+      <a href="{% url 'items_list' %}" class="btn nav-btn">Order</a>
+      <a href="#" class="btn nav-btn">About Us</a>
+      <a href="#" class="btn nav-btn">Contact</a>
+      <a href="{% url 'session_cart' %}" class="btn nav-btn" id="cart-btn">
+        <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Cart icon">
+        Cart
+        {% if num_of_items > 0 %}
+        : {{ num_of_items }}
+        {% endif %}
+      </a>
+    </nav>
+  </div>
 
   {% block content %}
   {% endblock %}
 
-  <!-- </script> -->
-  <!-- <script type="text/javascript" src="{% static 'js/base.js' %}"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="text/javascript">
+    let static_url = "{% get_static_prefix %}"
+  </script>
+  <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
 
   {% block scripts %}
   {% endblock scripts %}

@@ -60,6 +60,7 @@ nav {
   color: white;
 }
 
-#secret-text {
-  display: none;
+.cart-btn {
+  background: #CC0000;
+  color: white;
 }

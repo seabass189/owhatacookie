@@ -1,3 +1,6 @@
+/* base.html
+================================================*/
+
 body {
   margin: 0;
   color: green;
@@ -17,6 +20,12 @@ a:hover {
 
 nav {
   text-align: center;
+  background-color: white;
+  border-bottom: 4px solid red;
+}
+
+.nav-border {
+  border-bottom: 4px solid white;
 }
 
 .logo {
@@ -33,7 +42,7 @@ nav {
 }
 
 .logo-img {
-  width: 100px;
+  width: 200px;
 }
 
 .logo-span {
@@ -59,7 +68,3 @@ nav {
   background: #CC0000;
   color: white;
 }
-
-/* .title-span {
-  display: none;
-} */

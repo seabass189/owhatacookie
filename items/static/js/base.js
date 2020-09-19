@@ -8,3 +8,16 @@ $(document).ready(function () {
     Cookies.set("scriptExecuted", "yes");
   }
 });
+
+// CART BUTTON
+let cartBtn = document.querySelector('#cart-btn')
+
+cartBtn.addEventListener('mouseover', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart-white.png'
+})
+
+cartBtn.addEventListener('mouseout', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart.png'
+})
