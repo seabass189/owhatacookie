@@ -38,7 +38,7 @@
       <a href="{% url 'items_list' %}" class="btn nav-btn">Order</a>
       <a href="#" class="btn nav-btn">About Us</a>
       <a href="#" class="btn nav-btn">Contact</a>
-      <a href="{% url 'session_cart' %}" class="btn nav-btn" id="cart-btn">
+      <a href="{% url 'session_cart' %}#checkout" class="btn nav-btn" id="cart-btn">
         <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Cart icon">
         Cart
         {% if num_of_items > 0 %}

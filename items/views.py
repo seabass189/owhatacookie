@@ -28,17 +28,17 @@ def load_items_list(request):
     }
     return context
 
-# def get_cart_subtotal(cart):
-#     subtotal = 0
-#     item_list = cart.get('details').get('item_id_list')
-#     for item_id in item_list:
-#         item_price = cart.get(str(item_id)).get('item').get('price')
-#         item_quantity =  cart.get(str(item_id)).get('quantity')
-#         subtotal += float(item_price) * item_quantity
-#     subtotal = Decimal(subtotal).quantize(Decimal('0.01'))
-#     return subtotal
-
 # SESSION CART FUNCTIONS
+def get_cart_subtotal(cart):
+    subtotal = 0
+    item_list = cart.get('details').get('item_id_list')
+    for item_id in item_list:
+        item_price = cart.get(str(item_id)).get('item').get('price')
+        item_quantity =  cart.get(str(item_id)).get('quantity')
+        subtotal += float(item_price) * item_quantity
+    subtotal = Decimal(subtotal).quantize(Decimal('0.01'))
+    return subtotal
+
 def add_to_session_cart(request, id):
     item = get_object_or_404(Item, id=id)
     quantity = int(request.POST['quantity' + str(item.id)])
@@ -115,7 +115,7 @@ def session_cart(request):
             'num_of_items': 0,
             }
             return context
-        # context['order_subtotal'] = get_cart_subtotal(cart)
+        context['order_subtotal'] = get_cart_subtotal(cart)
         item_ids = cart.get('details').get('item_id_list')
         order_items = []
         for id in item_ids:
@@ -129,10 +129,11 @@ def session_cart(request):
             print('\nITEM DICT FOR ', id, ": ", item_dict, "\n")
             order_items.append(item_dict)
         if cart.get('details').get('note'):
-            context['order_node'] = cart.get('details').get('note')
+            context['order_note'] = cart.get('details').get('note')
         context['order_items'] = order_items
     else:
         context['message'] = 'You do not have a pending order'
+    print('\nCONTEXT:', context, '\n')
     return render(request, 'items/cart.html', context=context)
 
 def get_session_cart_size(cart):

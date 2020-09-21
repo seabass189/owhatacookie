@@ -5,10 +5,39 @@ body {
   background-color: orange;
 }
 
+.item-name {
+  color: #CC0000;
+  font-size: 25px;
+}
+
+.no-space {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  outline: none;
+}
+
 .cart-btn {
   color: #CC0000;
   background-color: white;
   border-radius: 10px;
+  padding: 6px;
+}
+
+button.cart-btn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.cart-btn:disabled,
+.cart-btn:disabled:hover,
+.cart-btn:disabled:focus {
+  color: gray;
+  background-color: #d3d3d3;
+  cursor: default;
 }
 
 .cart-btn:hover, .cart-btn:focus {
@@ -46,10 +75,13 @@ body {
   border-style: solid;
   border-radius: 5px;
   margin: 5px;
+  padding: 5px;
 }
+
 .cart-page #order-item img {
   padding: 5px;
   border-right: solid;
+  border-bottom: solid;
 }
 
 .cart-page #order-info div:first-child {
@@ -109,12 +141,23 @@ body {
 }
 
 .note-edit-btn {
-  color: #CC0000; /* special red */
+  background-color: #CC0000; /* special red */
+  color: white;
   border: #CC0000 1px solid;
   border-radius: 10px;
+  font-size: 10px;
 }
 
-.note-edit-btn:hover {
-  background-color: #CC0000;
-  color: white;
+.note-edit-btn:hover,
+.note-edit-btn:focus {
+  color: #CC0000;
+  background-color: white;
+}
+
+.order-note-div {
+  background: white;
+  border: #CC0000 solid 3px;
+  border-radius: 5px;
+  padding: 5px;
+  float: left;
 }

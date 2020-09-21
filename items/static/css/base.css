@@ -5,6 +5,7 @@ body {
   margin: 0;
   /* color: green; */
   font-family: 'Open Sans Condensed', sans-serif;
+  background-color: orange;
 }
 
 a {
@@ -21,7 +22,7 @@ a:hover {
 nav {
   text-align: center;
   background-color: white;
-  border-bottom: 4px solid red;
+  border-bottom: 4px solid #CC0000;
 }
 
 .nav-border {
