@@ -3,19 +3,19 @@
 
 body {
   margin: 0;
-  color: green;
+  /* color: green; */
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
 a {
   display: inline-block;
   padding: 10px 25px;
-  background-color: red;
+  /* background-color: red; */
 }
 
 a:hover {
   text-decoration: none;
-  background: orange;
+  /* background: orange; */
 }
 
 nav {

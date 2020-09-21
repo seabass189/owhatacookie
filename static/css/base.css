@@ -1,22 +1,31 @@
+/* base.html
+================================================*/
+
 body {
   margin: 0;
-  color: green;
+  /* color: green; */
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
 a {
   display: inline-block;
   padding: 10px 25px;
-  background-color: red;
+  /* background-color: red; */
 }
 
 a:hover {
   text-decoration: none;
-  background: orange;
+  /* background: orange; */
 }
 
 nav {
   text-align: center;
+  background-color: white;
+  border-bottom: 4px solid red;
+}
+
+.nav-border {
+  border-bottom: 4px solid white;
 }
 
 .logo {
@@ -33,7 +42,7 @@ nav {
 }
 
 .logo-img {
-  width: 100px;
+  width: 200px;
 }
 
 .logo-span {
@@ -56,11 +65,6 @@ nav {
 }
 
 .nav-btn:hover, .nav-btn:focus {
-  background: #CC0000;
-  color: white;
-}
-
-.cart-btn {
   background: #CC0000;
   color: white;
 }

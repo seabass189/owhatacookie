@@ -85,7 +85,7 @@ def session_cart(request):
     cart = request.session.get('cart')
     if cart:
         if request.method == 'POST':
-            print(request.POST)
+            print('\nREQUEST.POST: ', request.POST, '\n')
             item_list = cart.get('details').get('item_id_list')
             for item_id in item_list:
                 if ('item_note' + str(item_id)) in request.POST:
@@ -99,11 +99,12 @@ def session_cart(request):
                     else:
                         item = cart.get(str(item_id))
                         item['quantity'] = quantity
-                        cart[str(item_id)] = item_list
+                        cart[str(item_id)] = item
             cart['details']['item_id_list'] = item_list
             if 'instructionBox' in request.POST:
                 order_note = request.POST['instructionBox']
                 cart['details']['note'] = order_note
+            print('\nUPDATED CART: ', cart, '\n')
             request.session['cart'] = cart
         cart_size = get_session_cart_size(request.session.get('cart'))
         context['num_of_items'] = cart_size

@@ -29,11 +29,11 @@
           <div>
             Quantity (0* to 20):
             <input type="number"
-              id="quantity"
-              name="quantity{{ order_item.item.id }}"
-              value="{{ order_item.quantity }}"
-              min="0" max="20"
-              onclick="enableChange1(this, '{{ order_item.quantity }}')">
+            id="quantity"
+            name="quantity{{ order_item.item.id }}"
+            value="{{ order_item.quantity }}"
+            min="0" max="20"
+            onclick="enableChange1(this, '{{ order_item.quantity }}')">
           </div>
           <div>
             Unit Price:
@@ -43,9 +43,9 @@
             Note:
             {% if order_item.note|length > 0 %}
             <b>{{ order_item.note }} </b>
-            <a class="show" id="note{{ order_item.item.id }}" href="#" onclick="clickAddNote('{{ order_item.item.id }}')">Edit</a>
+            <a class="show note-edit-btn" id="note{{ order_item.item.id }}" href="#" onclick="clickAddNote('{{ order_item.item.id }}')">Edit</a>
             {% else %}
-            <a class="show" id="note{{ order_item.item.id }}" href="#" onclick="clickAddNote('{{ order_item.item.id }}')">+</a>
+            <a class="show note-edit-btn" id="note{{ order_item.item.id }}" href="#" onclick="clickAddNote('{{ order_item.item.id }}')">+</a>
             {% endif %}
             <input class="hide" style="width:180px;" type="text" id="textbox{{ order_item.item.id }}" name="item_note{{ order_item.item.id }}" value="{{ order_item.note }}" onkeyup="enableChange2(this)">
           </div>
@@ -57,11 +57,11 @@
     <div id="edit-add">
       Instruction Note:
       {% if order_note|length > 0 %}
-      <a>{{ order_note }} </a>
-      <a class="show" id="instructionclick" href="#" onclick="clickAddInstructionNote()">Edit</a>
-      {% else %}
-      <a class="show" id="instructionclick" href="#" onclick="clickAddInstructionNote()">+</a>
-      {% endif %}
+        <a>{{ order_note }} </a>
+        <a class="show note-edit-btn" id="instructionclick" href="#" onclick="clickAddInstructionNote()">Edit</a>
+        {% else %}
+        <a class="show note-edit-btn" id="instructionclick" href="#" onclick="clickAddInstructionNote()">+</a>
+        {% endif %}
       <input style="width:700px;" class="hide" type="text" id="instructionBox" name="instructionBox" value="{{ order_note }}" onkeyup="enableChange2(this)">
     </div>
     <p align="right">

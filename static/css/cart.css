@@ -83,11 +83,11 @@ body {
   border-radius: 20px;
   transition-duration: 0.4s;
 
-  /* color: white; */
+  color: white;
   padding: 0 5px;
 }
 .cart-page button:hover, #edit-add a:last-of-type:hover {
-  /* background-color: white; */
+  background-color: white;
   text-decoration: none;
 }
 .cart-page input {
@@ -98,23 +98,21 @@ body {
   width: 15%;
   text-align: left;
 }
-
-/* .cart-page label {
-  font-family: 'Abril Fatface', cursive;
-  background-color: orange;
-} */
+.cart-page label {
+  /* font-family: 'Abril Fatface', cursive; */
+  /* background-color: orange; */
+}
 
 .cart-page .hide {
   display: none;
 }
 
 .note-edit-btn {
+  /* color: black; */
   color: #CC0000; /* special red */
-  border: #CC0000 1px solid;
-  border-radius: 10px;
 }
 
 .note-edit-btn:hover {
-  background-color: #CC0000;
+  background-color: green;
   color: white;
 }
