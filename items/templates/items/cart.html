@@ -1,0 +1,87 @@
+{% extends 'items/base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/cart.css' %}" rel="stylesheet">
+<title>Cart</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>{{ message }}</h2><br>
+</div>
+
+<div class="container cart-page">
+  <a href="#checkout" class="no-space"></a>
+  <h2>My Cart</h2>
+  <a class="btn cart-btn" href="{% url 'items_list' %}">Click to add other items to your cart</a>
+  <p>*Change quantity to '0' to delete an item</p>
+
+  <form class="" action="{% url 'session_cart' %}#checkout" method="post">
+    {% csrf_token %}
+    <div id=order-list>
+      {% for order_item in order_items %}
+      <div id="order-item">
+        <img class="card-img-top" src="{{ order_item.item.image.url }}" height="140"></img>
+        <div id="order-info">
+          <div>
+            <h3 class="item-name">{{ order_item.item.name }}</h3>
+          </div>
+          <div>
+            Quantity (0* to 20):
+            <input type="number"
+            class="quantity-select"
+            id="quantity"
+            name="quantity{{ order_item.item.id }}"
+            value="{{ order_item.quantity }}"
+            min="0" max="20"
+            onclick="enableChange1(this, '{{ order_item.quantity }}')">
+          </div>
+          <div>
+            Unit Price:
+            ${{ order_item.item.price }}
+          </div>
+          <div id="edit-add">
+            Note:
+            {% if order_item.note|length > 0 %}
+            <b>{{ order_item.note }} </b>
+            <a class="btn show note-edit-btn" id="note{{ order_item.item.id }}" href="#checkout" onclick="clickAddNote('{{ order_item.item.id }}')">Edit</a>
+            {% else %}
+            <a class="btn show note-edit-btn" id="note{{ order_item.item.id }}" href="#checkout" onclick="clickAddNote('{{ order_item.item.id }}')">+</a>
+            {% endif %}
+            <input class="hide" style="width:200px;" type="text" id="textbox{{ order_item.item.id }}" name="item_note{{ order_item.item.id }}" value="{{ order_item.note }}" onkeyup="enableChange2(this)">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <br>
+    <div id="edit-add" class="order-note-div">
+      Instruction Note:
+      {% if order_note|length > 0 %}
+        <a>{{ order_note }} </a>
+        <a class="show btn note-edit-btn" id="instructionclick" href="#checkout" onclick="clickAddInstructionNote()">Edit</a>
+        {% else %}
+        <a class="show btn note-edit-btn" id="instructionclick" href="#checkout" onclick="clickAddInstructionNote()">+</a>
+        {% endif %}
+      <input style="width:500px;" class="hide" type="text" id="instructionBox" name="instructionBox" value="{{ order_note }}" onkeyup="enableChange2(this)">
+    </div>
+    <p align="right">
+      <button class="btn cart-btn" id="save" disabled>Save</button>
+    </p>
+  </form>
+
+
+  <br>
+  <p align="center">
+    <a  class="no-space" href="#wow"><button class="btn cart-btn" id="checkout">Checkout - Subtotal: ${{ order_subtotal }}</button></a>
+    <br>
+    <i>(Please make sure to save cart before checkout)</i>
+  </p>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+{% endblock scripts %}

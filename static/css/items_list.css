@@ -1,0 +1,10 @@
+/* items_list.html
+================================================*/
+
+.hide {
+  display: none;
+}
+
+.card-img-top {
+  object-fit: cover;
+}
