@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="container">
-  <h2>{{ message }}</h2><br>
+  <h2>{{ message }}</h2>
 </div>
 
 <div class="container cart-page">
@@ -74,7 +74,7 @@
 
   <br>
   <p align="center">
-    <a  class="no-space" href="#wow"><button class="btn cart-btn" id="checkout">Checkout - Subtotal: ${{ order_subtotal }}</button></a>
+    <a class="no-space" href="{% url 'session_checkout' %}"><button class="btn cart-btn" id="checkout">Checkout - Subtotal: ${{ order_subtotal }}</button></a>
     <br>
     <i>(Please make sure to save cart before checkout)</i>
   </p>

@@ -2,9 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Item
 from decimal import *
 
+debug = False
+
 def home(request):
     context = {
     'num_of_items': get_session_cart_size(request.session.get('cart')),
+    'show_logo': True,
     }
     return render (request, 'items/home.html', context=context)
 
@@ -25,6 +28,7 @@ def load_items_list(request):
     'category_items': category_items,
     'i_amt': range(len(category_names)),
     'num_of_items': get_session_cart_size(request.session.get('cart')),
+    # 'show_logo': True,
     }
     return context
 
@@ -77,7 +81,7 @@ def add_to_session_cart(request, id):
         message = 'Cart updated.'
     context = load_items_list(request)
     context['message'] = message
-    context['num_of_items'] = get_session_cart_size(request.session.get('cart'))
+    # context['show_logo'] = True
     return render(request, 'items/items_list.html',context = context)
 
 def session_cart(request):
@@ -85,7 +89,7 @@ def session_cart(request):
     cart = request.session.get('cart')
     if cart:
         if request.method == 'POST':
-            print('\nREQUEST.POST: ', request.POST, '\n')
+            if debug: print('\nREQUEST.POST: ', request.POST, '\n')
             item_list = cart.get('details').get('item_id_list')
             for item_id in item_list:
                 if ('item_note' + str(item_id)) in request.POST:
@@ -104,7 +108,7 @@ def session_cart(request):
             if 'instructionBox' in request.POST:
                 order_note = request.POST['instructionBox']
                 cart['details']['note'] = order_note
-            print('\nUPDATED CART: ', cart, '\n')
+            if debug: print('\nUPDATED CART: ', cart, '\n')
             request.session['cart'] = cart
         cart_size = get_session_cart_size(request.session.get('cart'))
         context['num_of_items'] = cart_size
@@ -126,20 +130,20 @@ def session_cart(request):
             }
             if cart.get(str(item.id)).get('note'):
                 item_dict['note'] = cart.get(str(item.id)).get('note')
-            print('\nITEM DICT FOR ', id, ": ", item_dict, "\n")
+            if debug: print('\nITEM DICT FOR ', id, ": ", item_dict, "\n")
             order_items.append(item_dict)
         if cart.get('details').get('note'):
             context['order_note'] = cart.get('details').get('note')
         context['order_items'] = order_items
     else:
         context['message'] = 'You do not have a pending order'
-    print('\nCONTEXT:', context, '\n')
+    if debug: print('\nCONTEXT:', context, '\n')
     return render(request, 'items/cart.html', context=context)
 
 def get_session_cart_size(cart):
     size = 0
     if cart:
-        print('\nCART: ', cart ,'\n')
+        if debug: print('\nCART: ', cart ,'\n')
         item_list = cart.get('details').get('item_id_list')
         for item_id in item_list:
             item_quantity =  cart.get(str(item_id)).get('quantity')

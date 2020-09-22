@@ -23,6 +23,7 @@
 
 </head>
 <body>
+  {% if show_logo %}
   <div class="logo-border">
     <div class="logo">
       <img class="logo-img" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="The logo of O'Whata Cookie"><br>
@@ -32,8 +33,14 @@
       </p>
     </div>
   </div>
+  {% endif %}
   <div class="nav-border">
     <nav>
+      {% if not show_logo %}
+      <div class="small-img-div">
+        <img class="logo-img small-img" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="The logo of O'Whata Cookie"><br>
+      </div>
+      {% endif %}
       <a href="{% url 'home' %}" class="btn nav-btn" id="home-btn">Home</a>
       <a href="{% url 'items_list' %}" class="btn nav-btn">Order</a>
       <a href="#" class="btn nav-btn">About Us</a>

@@ -7,4 +7,9 @@
 
 .card-img-top {
   object-fit: cover;
+  height: 200px;
+}
+
+.items-view {
+  padding: 35px;
 }

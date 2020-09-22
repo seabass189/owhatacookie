@@ -3,7 +3,6 @@
 
 body {
   margin: 0;
-  /* color: green; */
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: orange;
 }
@@ -11,21 +10,21 @@ body {
 a {
   display: inline-block;
   padding: 10px 25px;
-  /* background-color: red; */
 }
 
 a:hover {
   text-decoration: none;
-  /* background: orange; */
 }
 
 nav {
   text-align: center;
   background-color: white;
+  border-top: 4px solid #CC0000;
   border-bottom: 4px solid #CC0000;
 }
 
 .nav-border {
+  border-top: 4px solid white;
   border-bottom: 4px solid white;
 }
 
@@ -34,16 +33,22 @@ nav {
   background: orange;
   padding: 15px;
   border-top: white 4px solid;
-  border-bottom: white 4px solid;
 }
 
 .logo-border {
   border-top: #CC0000 4px solid;
-  border-bottom: #CC0000 4px solid;
 }
 
 .logo-img {
   width: 200px;
+}
+
+.small-img-div {
+  display: inline-block;
+}
+
+.small-img {
+  width:44px;
 }
 
 .logo-span {

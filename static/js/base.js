@@ -21,3 +21,18 @@ cartBtn.addEventListener('mouseout', function(e) {
   let cartImg = document.querySelector('#cart-img')
   cartImg.src = static_url + 'images/cart.png'
 })
+
+cartBtn.addEventListener('focus', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart-white.png'
+})
+
+cartBtn.addEventListener('blur', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart.png'
+})
+
+cartBtn.addEventListener('pointerdown', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart-white.png'
+})

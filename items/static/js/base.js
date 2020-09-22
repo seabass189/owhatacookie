@@ -31,3 +31,13 @@ cartBtn.addEventListener('blur', function(e) {
   let cartImg = document.querySelector('#cart-img')
   cartImg.src = static_url + 'images/cart.png'
 })
+
+cartBtn.addEventListener('pointerdown', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart-white.png'
+})
+
+cartBtn.addEventListener('select', function(e) {
+  let cartImg = document.querySelector('#cart-img')
+  cartImg.src = static_url + 'images/cart-white.png'
+})

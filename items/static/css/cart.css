@@ -161,3 +161,9 @@ button.cart-btn {
   padding: 5px;
   float: left;
 }
+
+input[type=number] {
+  width: 41px;
+  color: #CC0000;
+  border-color: #CC0000; 
+}
