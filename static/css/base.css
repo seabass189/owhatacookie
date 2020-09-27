@@ -4,7 +4,10 @@
 body {
   margin: 0;
   font-family: 'Open Sans Condensed', sans-serif;
+  color: #CC0000;
+  /* color: black; */
   background-color: orange;
+
 }
 
 a {
@@ -21,6 +24,13 @@ nav {
   background-color: white;
   border-top: 4px solid #CC0000;
   border-bottom: 4px solid #CC0000;
+}
+
+.title {
+  color: black;
+  font-size: 40px;
+  text-align: center;
+  padding: 10px 0;
 }
 
 .nav-border {

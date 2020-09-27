@@ -2,13 +2,107 @@
 {% load static %}
 
 {% block css %}
-<!-- <link href="{% static 'css/home.css' %}" rel="stylesheet"> -->
+<link href="{% static 'css/checkout.css' %}" rel="stylesheet">
 <title>Checkout</title>
 {% endblock %}
 
 {% block content %}
-<footer>
-  <h5 class="foo">Checkout Page!!!!</h5>
-</footer>
 
+
+
+<div class="container checkout">
+  <div class="title"><h1>Checkout</h1></div>
+  <div class="row">
+
+    <div class="col-sm-12 col-md-8 col-lg-8 info">
+      <form class="" action="{% url 'session_checkout' %}" method="post">
+        <div class="form-group">
+          <div class="row">
+            <input class="col-lg-5" type="text" name="first_name" placeholder="First Name*" id="first_name" required>
+            <input class="col-lg-5" type="text" name="last_name" placeholder="Last Name*" id="last_name" required>
+          </div>
+          <div class="row">
+            <input class="col-lg-6" type="text" name="email" placeholder="Email*" id="email" required>
+            <input class="col-lg-4" type="text" name="phone" placeholder="Phone Number" id="phone">
+          </div>
+          <div class="row">
+            <input type="radio" name="delivery_type" id="set_pickup" value="pickup" onclick="hideAddress()">
+            <label for="set_pickup">I'll pickup!</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="delivery_type" id="set_delivery" value="delivery" onclick="showAddress()">
+            <label for="set_delivery">Request Delivery</label>
+          </div>
+          <div id="address_div" class="hide">
+            <div class="row">
+              <input class="col-lg-10" type="text" name="street_one" placeholder="Address Line 1*" id="street_one">
+            </div>
+            <div class="row">
+              <input class="col-lg-10" type="text" name="street_two" placeholder="Address Line 2*" id="street_two">
+            </div>
+            <div class="row">
+              <input class="col-5 col-lg-5" type="text" name="city" placeholder="City*" id="city">
+              <input class="col-2 col-lg-1" type="text" name="state" placeholder="State*" id="state">
+              <input class="col-3 col-lg-2" type="text" name="zip" placeholder="Zipcode*" id="zip">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-sm-12  col-md-4 col-lg-4">
+      <div class="container bill">
+        <div>
+          <h2 class="order-title">Order Bill</h2>
+          <p> Number of Items: ({{num_of_items}}) </p>
+        </div>
+        {% for item, item_details in order_list.items %}
+        <div class="row">
+          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+            {{ item_details.quantity }} x {{ item }}:
+          </div>
+          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            ${{ item_details.total_price }}
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="row subtotal">
+          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+            Subtotal:
+          </div>
+          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            ${{ subtotal }}
+          </div>
+        </div>
+
+        {% for fee, price in fees.items %}
+        <div class="row fee">
+          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+            {{ fee }}:
+          </div>
+          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            ${{ price }}
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="row total">
+          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+            Total:
+          </div>
+          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            ${{ total }}
+          </div>
+        </div>
+
+      </div> <!-- end of bill -->
+    </div>
+
+  </div>
+</div>
 {% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/checkout.js' %}"></script>
+{% endblock scripts %}

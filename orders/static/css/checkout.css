@@ -1,0 +1,66 @@
+/* checkout.html
+================================================*/
+.checkout h1 {
+  /* font-family: 'Lobster', cursive; */
+  font-size: 40px;
+  text-align: center;
+  padding: 10px 0;
+}
+.hide {
+  display: none;
+}
+
+.form-group {
+  color: black;
+}
+
+.checkout {
+  padding: 30px;
+}
+
+.bill {
+  padding: 10px 20px;
+  background: white;
+  border-radius: 5px;
+  border: dashed 2px #CC0000;
+}
+
+.order-title {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.info {
+  padding: 0 20px;
+}
+
+.checkout .form-group input {
+  padding: 3px;
+  margin: 3px;
+}
+
+.checkout .info button {
+  float: right;
+  margin-right: 10px;
+}
+
+.checkout button {
+  font-size: 20px;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+  background-color: #70A0AF; /* Pewter Blue */
+  color: white;
+}
+.checkout button:hover {
+  background-color: white;
+  color: #70A0AF; /* Pewter Blue */
+}
+
+.subtotal {
+  padding: 3px 0;
+}
+
+.total {
+  border-top: 2px solid #CC0000;
+  padding-top: 3px;
+}

@@ -2,6 +2,11 @@ from django.shortcuts import render
 from items import views as items_views
 
 def session_checkout(request):
+    # context = {}
+    # cart = request.session.get('cart')
+    # if cart:
+    #     subtotal = get_cart_subtotal(cart)
+
     context = {
     'num_of_items': items_views.get_session_cart_size(request.session.get('cart')),
     }
