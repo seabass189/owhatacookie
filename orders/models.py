@@ -40,6 +40,18 @@ class Order(models.Model):
             }
         return order_list
 
+    def get_item_list(self):
+        item_list = []
+        order_items = list(OrderItem.objects.filter(order=self))
+        for order_item in order_items:
+            item_list.append({
+            'name': order_item.item.name,
+            'total_price': order_item.get_total_item_price(),
+            'quantity': order_item.quantity,
+            'note': order_item.note,
+            })
+        return item_list
+
     def get_sales_tax(self):
         return Decimal(float(self.get_subtotal()) * 0.09).quantize(Decimal('0.01'))
 

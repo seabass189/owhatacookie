@@ -6,7 +6,7 @@
   text-align: center;
   padding: 10px 0;
 }
-.checkout .hide {
+.hide {
   display: none;
 }
 
@@ -14,90 +14,65 @@
   color: black;
 }
 
-/* .checkout .form-group {
-  display: grid;
-  grid-template-columns: 1fr 120px 100px;
-} */
+.checkout {
+  padding: 30px;
+}
+
+.bill {
+  padding: 10px 20px;
+  background: white;
+  border-radius: 5px;
+  border: dashed 2px #CC0000;
+}
+
+.order-title {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.info {
+  padding: 0 20px;
+}
+
 .checkout .form-group input {
   padding: 3px;
   margin: 3px;
 }
-/* .checkout .form-group input:first-of-type {
-  grid-column-start: 1;
-  grid-column-end: 2;
-} */
-.checkout .info button {
-  float: right;
-  margin-right: 10px;
+
+.subtotal {
+  padding-top: 15px;
 }
 
-.checkout .bill h2 {
-  /* font-family: 'Pacifico', cursive; */
-  text-align: center;
-  font-weight: bold;
-  padding-bottom: 10px;
-  text-decoration: underline
-}
-.checkout .bill h3 {
-  /* font-family: 'Itim', cursive; */
-  font-size: 20px;
-  text-align: center;
+.total {
+  border-top: 2px solid #CC0000;
+  padding-top: 3px;
 }
 
-.checkout .bill p {
-  text-align: center;
+.confirm-btn-div {
+  /* background-color: green; */
 }
 
-.checkout .bill {
-  background: white;
-  padding: 10px;
-  border-radius: 5px;
-  border-style: dashed;
-  border-width: 2px;
-}
-.checkout .bill div {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-}
-.checkout .bill div a {
-  text-align: right;
-}
-.checkout .bill div .total {
-  margin-top: 10px;
-  border-top: 2px solid #343434;
-}
-.checkout .bill div a:last-of-type {
-  font-weight: bold;
-}
-
-.checkout button {
-  /* font-family: 'Chewy', cursive; */
-  font-size: 20px;
-  border-radius: 20px;
-  transition-duration: 0.4s;
-  background-color: #70A0AF; /* Pewter Blue */
+.checkout-btn {
   color: white;
-}
-.checkout button:hover {
-  background-color: white;
-  color: #70A0AF; /* Pewter Blue */
+  background-color: #CC0000;
+  border-radius: 10px;
+  padding: 6px;
+  /* margin: 10px; */
+  width: 125px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
 }
 
-@media (min-width: 900px) {
-  .checkout {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-  }
-  .checkout .title {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  .checkout .bill {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-  }
-  .checkout .info {
-    padding: 10px;
-  }
+.checkout-btn:hover, .checkout-btn:focus {
+  background-color: white;
+  color: #CC0000;
+}
+
+.disabled,
+.disabled:hover,
+.disabled:focus {
+  color: gray;
+  background-color: #d3d3d3;
+  cursor: default;
 }

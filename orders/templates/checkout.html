@@ -1,5 +1,6 @@
 {% extends 'items/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block css %}
 <link href="{% static 'css/checkout.css' %}" rel="stylesheet">
@@ -8,45 +9,51 @@
 
 {% block content %}
 
-
+{% load widget_tweaks %}
 
 <div class="container checkout">
+  <div class="container">
+    <h2 class="message">{{ message }}</h2>
+  </div>
+
   <div class="title"><h1>Checkout</h1></div>
   <div class="row">
 
     <div class="col-sm-12 col-md-8 col-lg-8 info">
-      <form class="" action="{% url 'session_checkout' %}" method="post">
+      <form id="checkout-form" action="{% url 'session_checkout' %}" method="post">
+        {% csrf_token %}
         <div class="form-group">
           <div class="row">
-            <input class="col-lg-5" type="text" name="first_name" placeholder="First Name*" id="first_name" required>
-            <input class="col-lg-5" type="text" name="last_name" placeholder="Last Name*" id="last_name" required>
+            {{ form.first_name|add_class:"col-lg-5" }}
+            {{ form.last_name|add_class:"col-lg-5" }}
           </div>
           <div class="row">
-            <input class="col-lg-6" type="text" name="email" placeholder="Email*" id="email" required>
-            <input class="col-lg-4" type="text" name="phone" placeholder="Phone Number" id="phone">
+            {{ form.email|add_class:"col-lg-6" }}
+            {{ form.phone|add_class:"col-lg-4" }}
           </div>
           <div class="row">
-            <input type="radio" name="delivery_type" id="set_pickup" value="pickup" onclick="hideAddress()">
+            <input type="radio" name="delivery_type" id="set-pickup" value="pickup">
             <label for="set_pickup">I'll pickup!</label>
           </div>
           <div class="row">
-            <input type="radio" name="delivery_type" id="set_delivery" value="delivery" onclick="showAddress()">
+            <input type="radio" name="delivery_type" id="set-delivery" value="delivery">
             <label for="set_delivery">Request Delivery</label>
           </div>
           <div id="address_div" class="hide">
             <div class="row">
-              <input class="col-lg-10" type="text" name="street_one" placeholder="Address Line 1*" id="street_one">
+              {{ form.street_one|add_class:"col-lg-10" }}
             </div>
             <div class="row">
-              <input class="col-lg-10" type="text" name="street_two" placeholder="Address Line 2*" id="street_two">
+              {{ form.street_two|add_class:"col-lg-10" }}
             </div>
             <div class="row">
-              <input class="col-5 col-lg-5" type="text" name="city" placeholder="City*" id="city">
-              <input class="col-2 col-lg-1" type="text" name="state" placeholder="State*" id="state">
-              <input class="col-3 col-lg-2" type="text" name="zip" placeholder="Zipcode*" id="zip">
+              {{ form.city|add_class:"col-5 col-lg-5" }}
+              {{ form.state|add_class:"col-2 col-lg-1" }}
+              {{ form.zipcode|add_class:"col-3 col-lg-2" }}
             </div>
           </div>
         </div>
+        <button type="submit" class="" align=right>Confirm Purchase</button>
       </form>
     </div>
 
@@ -54,7 +61,7 @@
       <div class="container bill">
         <div>
           <h2 class="order-title">Order Bill</h2>
-          <p> Number of Items: ({{num_of_items}}) </p>
+          <p> {{num_of_items}} Total Items </p>
         </div>
         {% for item, item_details in order_list.items %}
         <div class="row">
@@ -98,8 +105,12 @@
 
       </div> <!-- end of bill -->
     </div>
-
   </div>
+
+  <div class="hide confirm-btn-div">
+    <a class="checkout-btn disabled" id="confirm-btn" href="">Confirm Purchase</a>
+  </div>
+
 </div>
 {% endblock %}
 

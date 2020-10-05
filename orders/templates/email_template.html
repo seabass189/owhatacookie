@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+</head>
+<body style="margin:0;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFA000">
+    <tr>
+      <td>
+        <table class="container" width="640" align="center" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td valign="top" align="center" class="logo" bgcolor="#ffffff" style="padding: 10px 20px 0 30px;border-left: 2px solid #E30000;border-right: 2px solid #E30000;border-top: 2px solid #E30000;">
+              <a href="#"><img style="margin-left: -15px;" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="Logo" width="150" height="150" border="0"></a>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" align="center" class="headline" bgcolor="#ffffff" style="padding: 15px 20px 5px 30px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+              <h1 style="margin: 0 0 15px 0;font-weigth: normal;font-size: 32px;color: #E30000;">O'Whata Cookie Invoice</h1>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" class="headline" bgcolor="#f5f2e5" style="padding: 15px 20px 5px 30px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+              <h3>{{ order.customer.first_name }}, thank you for ordering from O'Whata Cookie! We appreciate your business. See below for the invoice of your order.</h3>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" bgcolor="#f5f2e5" class="content" style="padding: 5px 30px 30px 30px; border-right: 2px solid #E30000; border-left: 2px solid #E30000; font-family:Arial, Helvetica, sans-serif; font-size: 16px; line-height:22px; color: #654308;">
+              <table align="center" width="85%" border="0" cellspacing="0" cellpadding="0" style="padding: 10px 20px;background: white;border-top-right-radius: 5px;border-top-left-radius: 5px;border-top: dashed 2px #CC0000;border-right: dashed 2px #CC0000;border-left: dashed 2px #CC0000;">
+                <tr style="line-height: 6px;">
+                  <td>
+                    <h2 style="text-decoration: underline;text-align: center;">Order Bill</h2>
+                  </td>
+                </tr>
+                <tr style="line-height: 6px;">
+                  <td>
+                    <p style="text-align: center;">{{num_of_items}} Total Items</p>
+                  </td>
+                </tr>
+              </table>
+              <table align="center" width="85%" border="0" cellspacing="0" cellpadding="0" style="padding: 0 25px 10px;background: white;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;border-bottom: dashed 2px #CC0000;border-right: dashed 2px #CC0000;border-left: dashed 2px #CC0000;">
+
+                {% for item in item_list %}
+                <tr>
+                  <td style="padding-left: 20px;font-weight: 700;">
+                    {{ item.quantity }} x {{ item.name }}:
+                  </td>
+                  <td style="font-weight: 700;">
+                    ${{ item.total_price }}
+                  </td>
+                </tr>
+                {% if item.note %}
+                <tr>
+                  <td style="padding-left: 35px;font-style: italic;">
+                    Note: {{ item.note }}
+                  </td>
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+
+                {% if order.note %}
+                <tr>
+                  <td style="padding: 10px 0 0 20px;font-style: italic;">
+                    Order Note: {{ order.note }}
+                  </td>
+                </tr>
+                {% endif %}
+
+                <tr>
+                  <td style="padding: 15px 20px 0;">
+                    Subtotal:
+                  </td>
+                  <td style="padding: 15px 0 0;">
+                    ${{ subtotal }}
+                  </td>
+                </tr>
+                {% for fee, price in fees.items %}
+                <tr>
+                  <td style="padding-left: 20px;">
+                    {{ fee }}:
+                  </td>
+                  <td>
+                    ${{ price }}
+                  </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                  <td style="padding-top:15px;border-top: 1px dashed #CC0000;padding-left: 20px;font-weight: 700;">
+                    Total:
+                  </td>
+                  <td style="padding-top:15px;border-top: 1px dashed #CC0000;font-weight: 700;">
+                    ${{ total }}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 30px 0 30px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+              <h3>We will contact you using this info:</h3>
+              <p style="line-height: 20px;">
+                {{ order.customer.first_name }} {{ order.customer.last_name }}<br>
+                {{ order.customer.email }}<br>
+                {{ order.customer.phone_number }}
+              </p>
+
+              {% if not order.pickup %}
+              <h4>Delivery Address</h4>
+              <p style="line-height: 20px;">
+                {{ order.customer.address.street_one }}<br>
+                {{ order.customer.address.street_two }}<br>
+                {{ order.customer.address.city }}, {{ order.customer.address.state }} {{ order.customer.address.zipcode }}
+              </p>
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 35px 30px 35px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 35px 30px 35px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </td>
+          </tr>
+          <tr bgcolor="#CC0000" height="80">
+            <td>&nbsp;</td>
+          </tr>
+  </table>
+</body>
+</html>

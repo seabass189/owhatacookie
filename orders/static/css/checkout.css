@@ -39,28 +39,40 @@
   margin: 3px;
 }
 
-.checkout .info button {
-  float: right;
-  margin-right: 10px;
-}
-
-.checkout button {
-  font-size: 20px;
-  border-radius: 20px;
-  transition-duration: 0.4s;
-  background-color: #70A0AF; /* Pewter Blue */
-  color: white;
-}
-.checkout button:hover {
-  background-color: white;
-  color: #70A0AF; /* Pewter Blue */
-}
-
 .subtotal {
-  padding: 3px 0;
+  padding-top: 15px;
 }
 
 .total {
   border-top: 2px solid #CC0000;
   padding-top: 3px;
+}
+
+.confirm-btn-div {
+  /* background-color: green; */
+}
+
+.checkout-btn {
+  color: white;
+  background-color: #CC0000;
+  border-radius: 10px;
+  padding: 6px;
+  /* margin: 10px; */
+  width: 125px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+}
+
+.checkout-btn:hover, .checkout-btn:focus {
+  background-color: white;
+  color: #CC0000;
+}
+
+.disabled,
+.disabled:hover,
+.disabled:focus {
+  color: gray;
+  background-color: #d3d3d3;
+  cursor: default;
 }

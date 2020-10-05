@@ -26,6 +26,12 @@ nav {
   border-bottom: 4px solid #CC0000;
 }
 
+.message {
+  font-size: 30px;
+  margin: 15px 0;
+  font-style: italic;
+}
+
 .title {
   color: black;
   font-size: 40px;

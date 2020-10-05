@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Item
 from decimal import *
 
-debug = False
+debug = True
 
 def home(request):
     context = {
@@ -113,12 +113,13 @@ def session_cart(request):
         cart_size = get_session_cart_size(request.session.get('cart'))
         context['num_of_items'] = cart_size
         if cart_size < 1:
+            print('\nCART POPPED\n')
             request.session.pop('cart')
             context = {
             'message': 'You do not have a pending order',
             'num_of_items': 0,
             }
-            return context
+            return render(request, 'items/cart.html', context=context)
         context['order_subtotal'] = get_cart_subtotal(cart)
         item_ids = cart.get('details').get('item_id_list')
         order_items = []

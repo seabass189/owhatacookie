@@ -15,8 +15,8 @@
 }
 
 .cart-btn {
-  color: #CC0000;
-  background-color: white;
+  background-color: #CC0000;
+  color: white;
   border-radius: 10px;
   padding: 6px;
 }
@@ -36,8 +36,8 @@ button.cart-btn {
 }
 
 .cart-btn:hover, .cart-btn:focus {
-  color: white;
-  background-color: #CC0000;
+  color: #CC0000;
+  background-color: white;
 }
 
 .cart-page h2 {
