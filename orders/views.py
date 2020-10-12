@@ -122,14 +122,14 @@ def send_invoice(order):
     }
     html_content = render_to_string('email_template.html',content)
 
-    # send_mail(
-    # 'Hello from OWhata Cookie',
-    # strip_tags(html_content),
-    # 'sebash189@gmail.com',
-    # ['bages12658@bboygarage.com'],
-    # fail_silently = False,
-    # html_message = html_content
-    # )
+    send_mail(
+    'Hello from OWhata Cookie',
+    strip_tags(html_content),
+    'sebash189@gmail.com',
+    ['bages12658@bboygarage.com'],
+    fail_silently = False,
+    html_message = html_content
+    )
     return content
 
 def save_cart_as_order(cart):
