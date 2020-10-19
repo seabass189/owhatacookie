@@ -22,34 +22,35 @@
     table.container { width: 300px !important; }
     /* table.container td { border: none !important; } */
     /* td.logo { background: #fff url({% static 'images/Cookie_Logo_noBACK.png' %}) no-repeat center 10px; height: 50px; } */
+    /*  src="{% static 'images/Cookie_Logo_noBACK.png' %}" */
     td.headline h1 { font-size: 24px !important; text-align: center; }
     td.content { line-height: 20px !important; padding-bottom: 10px !important; }
   }
   </style>
 </head>
-<body style="margin:0;">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFA000">
+<body style="margin:0; color: black;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
     <tr>
       <td>
         <table class="container" width="640" align="center" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td valign="top" align="center" class="logo" bgcolor="#ffffff" style="padding: 10px 20px 0 30px;border-left: 2px solid #E30000;border-right: 2px solid #E30000;border-top: 2px solid #E30000;">
+            <td valign="top" align="center" class="logo" bgcolor="#ffffff" style="padding: 10px 20px 0 30px;">
               <a href="#"><img style="margin-left: -15px;" src="{% static 'images/Cookie_Logo_noBACK.png' %}" alt="Logo" width="150" height="150" border="0"></a>
             </td>
           </tr>
           <tr>
-            <td valign="top" align="center" class="headline" bgcolor="#ffffff" style="padding: 15px 20px 5px 30px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
-              <h1 style="margin: 0 0 15px 0;font-weigth: normal;font-size: 32px;color: #E30000;">O'Whata Cookie Invoice</h1>
+            <td valign="top" align="center" class="headline" bgcolor="#ffffff" style="padding: 15px 20px 5px 30px; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+              <h1 style="margin: 0 0 15px 0;font-size: 32px;color: #E30000;"><i>O'Whata Cookie Invoice</i></h1>
             </td>
           </tr>
           <tr>
-            <td valign="top" class="headline" bgcolor="#f5f2e5" style="padding: 15px 20px 5px 30px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+            <td valign="top" class="headline" bgcolor="#ffffff" style="padding: 15px 20px 5px 30px;font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
               <h3>{{ order.customer.first_name }}, thank you for ordering from O'Whata Cookie! We appreciate your business. See below for the invoice of your order.</h3>
             </td>
           </tr>
           <tr>
-            <td valign="top" bgcolor="#f5f2e5" class="content" style="padding: 5px 30px 30px; border-right: 2px solid #E30000; border-left: 2px solid #E30000; font-family:Arial, Helvetica, sans-serif; font-size: 16px; line-height:22px; color: #654308;">
-              <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" style="background: white;border-radius: 5px;border: dashed 2px #CC0000;">
+            <td valign="top" bgcolor="#ffffff" class="content" style="padding: 5px 30px 30px;font-family:Arial, Helvetica, sans-serif; font-size: 16px; line-height:22px;">
+              <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" style="background: white;border-radius: 5px;border: dashed 2px #000000;">
                 <tr>
                   <td>
                     <table align="center" width="85%" border="0" cellspacing="0" cellpadding="0">
@@ -116,10 +117,10 @@
                       </tr>
                       {% endfor %}
                       <tr>
-                        <td style="padding:15px 0;border-top: 2px dashed #CC0000;font-weight: 700;">
+                        <td style="padding:15px 0;border-top: 2px dashed #000000;font-weight: 700;">
                           Total:
                         </td>
-                        <td style="padding:15px 0;border-top: 2px dashed #CC0000;font-weight: 700;">
+                        <td style="padding:15px 0;border-top: 2px dashed #000000;font-weight: 700;">
                           ${{ total }}
                         </td>
                       </tr>
@@ -130,7 +131,7 @@
             </td>
           </tr>
           <tr>
-            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 30px 0 30px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 30px 0 30px;font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
               <h3>We will contact you using this info:</h3>
               <p style="line-height: 20px;">
                 {{ order.customer.first_name }} {{ order.customer.last_name }}<br>
@@ -149,21 +150,21 @@
             </td>
           </tr>
           <tr>
-            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 35px 30px 35px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 35px 30px 35px;font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </td>
           </tr>
           <tr>
-            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 35px 30px 35px; border-left: 2px solid #E30000; border-right: 2px solid #E30000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
+            <td valign="top" class="headline" bgcolor="#FFFFFF" style="padding: 15px 35px 30px 35px;font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px;">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </td>
           </tr>
           <tr>
-            <td valign="top" class="footer" bgcolor="#f5f2e5" style="padding: 10px 20px 30px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #b2a16e;border-left: 2px solid #E30000;border-right: 2px solid #E30000;border-bottom: 2px solid #E30000;">
+            <td valign="top" class="footer" bgcolor="#ffffff" style="padding: 10px 20px 30px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #808080;">
               &copy; O'Whata Cookie. PLEASE DO NOT REPLY TO THIS MESSAGE:
               <br><br>
-              Your <a href="#" style="color:#000000;">privacy</a> is important to us. Please use this link to <a href="#" style="color:#000000;">unsubscribe</a>.
-              <br><br>
+              <!-- Your <a href="#" style="color:#000000;">privacy</a> is important to us. Please use this link to <a href="#" style="color:#000000;">unsubscribe</a>.
+              <br><br> -->
               Lorem ipsum dolor sit amet consectetur adipi sicing elit sed do eiusmod tempor inci didunt ut labore et dolore iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </td>
           </tr>

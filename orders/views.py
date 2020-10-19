@@ -126,7 +126,7 @@ def send_invoice(order):
     'Hello from OWhata Cookie',
     strip_tags(html_content),
     'sebash189@gmail.com',
-    ['bages12658@bboygarage.com'],
+    ['wocop54455@ngo1.com', 'sebash189@gmail.com'],
     fail_silently = False,
     html_message = html_content
     )
