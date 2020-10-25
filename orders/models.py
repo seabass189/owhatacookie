@@ -12,7 +12,7 @@ class Order(models.Model):
     # review = models.ForeignKey(Review,on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
-        return str(self.customer) + " " + str(self.ordered_date)
+        return self.ref_code + " - " + str(self.customer) + " ORDERED: " + str(self.ordered_date)
 
     def get_subtotal(self):
         total = 0

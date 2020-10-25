@@ -2,13 +2,30 @@
 {% load static %}
 
 {% block css %}
-<!-- <link href="{% static 'css/checkout.css' %}" rel="stylesheet"> -->
+<link href="{% static 'css/confirmation.css' %}" rel="stylesheet">
 <title>Confirmation</title>
 {% endblock %}
 
 {% block content %}
 
-<h1>Confirm sent email!!!!</h1>
+<div class="container confirmation">
+  <div class="container">
+    <!-- <h2 class="message">Fake messsage{{ message }}</h2> -->
+    <h2>Thank you for ordering from O'Whata Cookie! We appreciate your business and support.</h2>
+    <p>{{ order.customer.first_name }}, we have emailed you an invoice for your order at {{ order.customer.email }}.
+    {% if order.customer.phone_number %}
+    If we have any questions, we will contact you at that email or by {{ order.customer.phone_number }}.
+    {% else %}
+    If we have any questions, we will contact you at that email.
+    {% endif %}
+    </p>
+    <p>Your order number is: {{ order.ref_code }}</p>
+    <p>O'Whata Cookie Venmo account: @owhatacookie</p>
+  </div>
+  <div class="container">
+    <p>Follow us on Instagram! @owhatacookie</p>
+  </div>
+</div>
 
 {% endblock %}
 

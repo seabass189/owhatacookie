@@ -58,11 +58,21 @@
   border-radius: 10px;
   padding: 6px;
   /* margin: 10px; */
-  width: 125px;
+  /* width: 125px; */
   text-align: center;
   display: block;
   margin: 10px auto;
+  border: none;
 }
+
+.checkout-btn:disabled,
+.checkout-btn:disabled:hover,
+.checkout-btn:disabled:focus {
+  color: gray;
+  background-color: #d3d3d3;
+  cursor: default;
+}
+
 
 .checkout-btn:hover, .checkout-btn:focus {
   background-color: white;
@@ -75,4 +85,13 @@
   color: gray;
   background-color: #d3d3d3;
   cursor: default;
+}
+
+.required {
+  color: #CC0000;
+  font-style: italic;
+}
+
+.radio-buttons {
+  padding: 3px 0;
 }

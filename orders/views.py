@@ -78,6 +78,12 @@ def session_checkout(request):
                         if debug: print('\n Delivery done \n')
                     else:
                         context['message'] = 'Please fill in the required delivery address fields.'
+                        context['form'] = form
+                        context['delivery'] = 'delivery'
+                        # context['first_name'] = first_name
+                        # context['last_name'] = last_name
+                        # context['email'] = email
+                        # context['phone'] = phone
                         return render (request, 'checkout.html', context=context)
                 elif pickup:
                     if debug: print('\n Pickup!!! \n')
@@ -92,12 +98,12 @@ def session_checkout(request):
             if debug: print('\nYAYAYYAYYA\n')
             context['message'] = 'Success!!! Ref code is ' + new_order.ref_code
             context['num_of_items'] = items_views.get_session_cart_size(request.session.get('cart'))
+            context['order'] = new_order
+            # content = send_invoice(new_order)
 
-            content = send_invoice(new_order)
-
-            return render (request, 'email_template.html', context=content)
+            # return render (request, 'email_template.html', context=content)
             # request.session.pop('cart')
-            # return render (request, 'confirmation.html')
+            return render (request, 'confirmation.html', context=context)
     else:
         context['message'] = 'You do not have a pending order'
         return render (request, 'checkout.html', context=context)
@@ -209,4 +215,4 @@ def get_cart_fees(subtotal):
     return fees
 
 def create_ref_code():
-    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+    return (''.join(random.choices(string.ascii_lowercase + string.digits, k=8))).upper()

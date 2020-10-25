@@ -1,7 +1,8 @@
 /* home.html
 ================================================*/
 
-h5 {
+.disclaimer {
   margin: 20px;
   font-style: italic;
+  text-align: left;
 }

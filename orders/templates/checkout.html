@@ -12,17 +12,19 @@
 {% load widget_tweaks %}
 
 <div class="container checkout">
-  <div class="container">
-    <h2 class="message">{{ message }}</h2>
-  </div>
+  <form id="checkout-form" action="{% url 'session_checkout' %}" method="post">
+    <div class="container">
+      <h2 class="message">{{ message }}</h2>
+    </div>
 
-  <div class="title"><h1>Checkout</h1></div>
-  <div class="row">
+    <div class="title"><h1>Checkout</h1></div>
+    <div class="row">
 
-    <div class="col-sm-12 col-md-8 col-lg-8 info">
-      <form id="checkout-form" action="{% url 'session_checkout' %}" method="post">
+      <div class="col-sm-12 col-md-8 col-lg-8 info">
+
         {% csrf_token %}
         <div class="form-group">
+          <p class="required">* (required)</p>
           <div class="row">
             {{ form.first_name|add_class:"col-lg-5" }}
             {{ form.last_name|add_class:"col-lg-5" }}
@@ -31,15 +33,27 @@
             {{ form.email|add_class:"col-lg-6" }}
             {{ form.phone|add_class:"col-lg-4" }}
           </div>
-          <div class="row">
-            <input type="radio" name="delivery_type" id="set-pickup" value="pickup">
-            <label for="set_pickup">I'll pickup!</label>
+
+          <div class="radio-buttons">
+            <div class="row">
+              <input type="radio" name="delivery_type" id="set-pickup" value="pickup">
+              <label for="set_pickup">I'll pickup!</label>
+            </div>
+            <div class="row">
+              {% if delivery %}
+              <input type="radio" name="delivery_type" id="set-delivery" value="delivery" checked>
+              {% else %}
+              <input type="radio" name="delivery_type" id="set-delivery" value="delivery">
+              {% endif %}
+              <label for="set_delivery">Request Delivery</label>
+            </div>
           </div>
-          <div class="row">
-            <input type="radio" name="delivery_type" id="set-delivery" value="delivery">
-            <label for="set_delivery">Request Delivery</label>
-          </div>
+
+          {% if delivery %}
+          <div id="address_div">
+          {% else %}
           <div id="address_div" class="hide">
+          {% endif %}
             <div class="row">
               {{ form.street_one|add_class:"col-lg-10" }}
             </div>
@@ -53,63 +67,69 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="" align=right>Confirm Purchase</button>
-      </form>
+
+      </div>
+
+      <div class="col-sm-12  col-md-4 col-lg-4">
+        <div class="container bill">
+          <div>
+            <h2 class="order-title">Order Bill</h2>
+            <p> {{num_of_items}} Total Items </p>
+          </div>
+          {% for item, item_details in order_list.items %}
+          <div class="row">
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+              {{ item_details.quantity }} x {{ item }}:
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+              ${{ item_details.total_price }}
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="row subtotal">
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+              Subtotal:
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+              ${{ subtotal }}
+            </div>
+          </div>
+
+          {% for fee, price in fees.items %}
+          <div class="row fee">
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+              {{ fee }}:
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+              ${{ price }}
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="row total">
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+              Total:
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+              ${{ total }}
+            </div>
+          </div>
+
+        </div> <!-- end of bill -->
+      </div>
     </div>
 
-    <div class="col-sm-12  col-md-4 col-lg-4">
-      <div class="container bill">
-        <div>
-          <h2 class="order-title">Order Bill</h2>
-          <p> {{num_of_items}} Total Items </p>
-        </div>
-        {% for item, item_details in order_list.items %}
-        <div class="row">
-          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
-            {{ item_details.quantity }} x {{ item }}:
-          </div>
-          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-            ${{ item_details.total_price }}
-          </div>
-        </div>
-        {% endfor %}
+    <!-- <div class="confirm-btn-div">
+      <a class="checkout-btn disabled" id="confirm-btn" href="">Confirm Purchase</a>
+    </div> -->
 
-        <div class="row subtotal">
-          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
-            Subtotal:
-          </div>
-          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-            ${{ subtotal }}
-          </div>
-        </div>
-
-        {% for fee, price in fees.items %}
-        <div class="row fee">
-          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
-            {{ fee }}:
-          </div>
-          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-            ${{ price }}
-          </div>
-        </div>
-        {% endfor %}
-
-        <div class="row total">
-          <div class="col-8 col-sm-8 col-md-8 col-lg-8">
-            Total:
-          </div>
-          <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-            ${{ total }}
-          </div>
-        </div>
-
-      </div> <!-- end of bill -->
-    </div>
-  </div>
-
-  <div class="hide confirm-btn-div">
-    <a class="checkout-btn disabled" id="confirm-btn" href="">Confirm Purchase</a>
-  </div>
+    {% if delivery %}
+    <button id="confirm-btn" type="submit" class="checkout-btn" align=right>Confirm Purchase</button>
+    {% else %}
+    <button id="confirm-btn" type="submit" class="checkout-btn" align=right disabled>Confirm Purchase</button>
+    {% endif %}
+  </form>
 
 </div>
 {% endblock %}

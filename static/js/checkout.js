@@ -4,6 +4,7 @@ let confirmBtn = document.getElementById('confirm-btn')
 
 delivery.addEventListener('click', function(){
   confirmBtn.className = 'checkout-btn'
+  confirmBtn.disabled = false
   document.getElementById("address_div").className = ''
   document.getElementById('street_one').setAttribute('required', 'required')
   document.getElementById('street_two').setAttribute('required', 'required')
@@ -23,9 +24,9 @@ pickup.addEventListener('click', function(){
   document.getElementById('zip').setAttribute('required', '')
 })
 
-confirmBtn.addEventListener('click', function(){
-  if (confirmBtn.disabled === false) {
-    document.getElementById('checkout-form').submit()
-    alert('uh oh')
-  }
-})
+// confirmBtn.addEventListener('click', function(){
+//   if (confirmBtn.disabled === false) {
+    // document.getElementById('checkout-form').submit()
+//     alert('uh oh')
+//   }
+// })

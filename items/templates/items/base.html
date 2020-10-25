@@ -14,6 +14,8 @@
 
   <!-- static CSS files -->
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
   {% block css %}
   {% endblock %}
 
@@ -55,13 +57,44 @@
     </nav>
   </div>
 
+  <main>
   {% block content %}
   {% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="footer-border">
+      <div class="row footer-contents">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 follow column">
+          <p class="footer-title">FOLLOW US</p>
+          <p>Instagram - <a class="social-link" href="https://www.instagram.com/owhatacookie/">@owhatacookie</a></p>
+          <p>Facebook - <a class="social-link" href="https://www.facebook.com/owhatacookie/">O'Whata Cookie</a></p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 address column">
+          <p class="footer-title">ADDRESS</p>
+          <p>Baking in Corona, CA</p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 hours column">
+          <p class="footer-title">HOURS</p>
+          <p>Mon – Thur  8AM - 5PM</p>
+          <p>Friday  8AM - 6PM</p>
+          <p>Saturday  8AM - 6PM</p>
+          <p>Sunday  7AM - 6PM</p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 copyright column">
+          <p class="footer-title"> </p>
+          <p>&copy;2020 by O'Whata Cookie.</p>
+          <p>A proud home cottage business.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script type="text/javascript">
-    let static_url = "{% get_static_prefix %}"
+  let static_url = "{% get_static_prefix %}"
   </script>
   <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
 

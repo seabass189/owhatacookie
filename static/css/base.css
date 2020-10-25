@@ -5,9 +5,7 @@ body {
   margin: 0;
   font-family: 'Open Sans Condensed', sans-serif;
   color: #CC0000;
-  /* color: black; */
   background-color: orange;
-
 }
 
 a {
@@ -89,4 +87,28 @@ nav {
 .nav-btn:hover, .nav-btn:focus {
   background: #CC0000;
   color: white;
+}
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+
+.footer-contents {
+  background-color: #f5f5f5;
+  color: #CC0000;
+  padding: 15px 0;
+  text-align: center;
+  width: 800px;
+}
+
+.columns {
+  display: flex;
+  margin: 10px auto;
+
+}
+
+.column {
+  margin: 0 10px;
 }
